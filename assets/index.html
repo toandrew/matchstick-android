@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:funcs="xalan://com.downjoy.app.netgame.common.util.XSLTFuncs">
+<head>
+<meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>MyFlint安装应用</title>
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+</head>
+
+<body style="background:none;">
+    <div class="main_box">
+    	<div class="title"><h3>MyFlint安装应用</h3></div>
+        <ul>
+           <li class="mr_bottom20">
+            	<div class="file_box file_box2">
+                   <div class="file_item">
+                       <input type="text" id="text_box2" class="text_box text_box2" />
+                       <a href="javascript:void(0)" class="file_btn drag"><i>&nbsp;</i>拖放APK文件到此</a>
+                   </div><!--file_item-->
+                   <form id="form2" action="/apk" onsubmit="document.charset='UTF-8';" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
+                   <input type="file"  name="fileField" size="50" height="86" id="file_uploader2" class="file_uploader file_uploader2" onclick="return false;" onchange="startUpload(0);"/>
+                   </form>
+                </div><!--end file_box2-->
+                <div class="file_box">
+                   <div class="file_item">
+                       <input type="text" id="text_box" class="text_box" />
+                       <a href="javascript:void(0)" class="file_btn add"><i>&nbsp;</i>浏 览</a>
+                   </div><!--file_item-->
+                   <form id="form" action="/apk" onsubmit="document.charset='UTF-8';" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
+                   <input type="file" name="fileField" size="15" height="86" id="file_uploader" class="file_uploader" onchange="startUpload(1);"/>
+                   </form>
+               </div><!--end file_box-->
+            </li>
+            <li class="mr_bottom10">
+            	<input type="text" class="links_input" id="links_input" value="请输入APK链接地址" />
+            </li>
+            <li class="mr_bottom20">
+            	<a href="javascript:void(0)" class="file_upload" id="remote_upload">上传</a>
+            </li>
+            <li>
+            	<div class="apk_info">
+                    <span class="info_title">文件信息：</span><span id="fileName" class="green" ></span><br />
+                    <span class="info_title">状态：</span><span id="resultInfo" class="green" ></span>
+                </div>
+            </li>
+        </ul>
+        <div class="footer">&nbsp;</div>
+    </div><!--end main_box-->
+    
+</body>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/apk.js"></script>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>
+    <dimen name="crosskr_padding_top">20.0dip</dimen>
+    
+    <dimen name="failed_page_padding_start">20dip</dimen>  
+    <dimen name="failed_page_padding_end">20dip</dimen>
+    
+    <dimen name="connect_error_title_margintop">10.0px</dimen>
+    <dimen name="connect_error_title_textsize">40.0dip</dimen> 
+    
+    <dimen name="connect_error_desc_margintop">10.0px</dimen>
+    <dimen name="connect_error_desc_textsize">40.0dip</dimen>
+    
+    <dimen name="line_image_margintop">25.0px</dimen>
+    
+    <dimen name="connect_error_detail_info_margintop">10.0px</dimen>
+    <dimen name="connect_error_detail_info_textsize">40.0dip</dimen>
+    
+    <dimen name="fling_ready_textsize">40.0dip</dimen>
+    <dimen name="ready_visit_textsize">20.0dip</dimen>
+    <dimen name="learn_visit_site_textsize">20.0dip</dimen>
+    
+    <dimen name="bottom_page_padding_start">20dip</dimen>  
+    <dimen name="bottom_page_padding_end">20dip</dimen>
+    <dimen name="bottom_page_padding_bottom">5dip</dimen>
+    
+    <dimen name="fling_device_name_margintop">10.0px</dimen>
+    <dimen name="fling_device_name_marginstart">10.0px</dimen>
+    <dimen name="fling_device_name_textsize">22.0dip</dimen>
+    
+    <dimen name="ready_wifi_name_marginstart">10.0px</dimen>
+    <dimen name="ready_wifi_name_textsize">22.0dip</dimen>
+    
+    <dimen name="fling_sw_version_margintop">0.0px</dimen>
+    <dimen name="fling_sw_version_marginstart">10.0px</dimen>
+    <dimen name="fling_sw_version_textsize">15.0dip</dimen>
+ 
+    <dimen name="fling_time_widget_margintop">30.0dip</dimen>
+    <dimen name="fling_time_widget_textsize">35.0dip</dimen>
+
+    <dimen name="time_page_padding_start">20.0dip</dimen>
+    <dimen name="time_page_padding_end">20.0dip</dimen>
+    <dimen name="bottom_line_image_margintop">25.0px</dimen>
+    <dimen name="bottom_line_image_padding_bottom">5.0dip</dimen>
+    <dimen name="logo_image_margintop">30.0dip</dimen>
+    <dimen name="ready_wifi_signal_padding_left">5.0dip</dimen>
+    <dimen name="ready_wifi_signal_padding_bottom">5.0dip</dimen>
+    <dimen name="ready_page_padding_bottom">0.0dip</dimen>
+    
+    
+    <dimen name="download_page_padding_bottom">0.0dip</dimen>
+    <dimen name="downloading_textsize">30.0dip</dimen>
+    <dimen name="downloading_percent_textsize">20.0dip</dimen>
+</resources>  

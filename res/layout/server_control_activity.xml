@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/wallpaper"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/time_page_padding_end"
+        android:paddingLeft="@dimen/time_page_padding_start"
+        android:paddingRight="@dimen/time_page_padding_end"
+        android:paddingStart="@dimen/time_page_padding_start" >
+
+        <ImageView
+            android:id="@+id/crosskr_img"
+            android:layout_width="128px"
+            android:layout_height="128px"
+            android:layout_marginTop="@dimen/crosskr_padding_top"
+            android:src="@drawable/crosskr" 
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/time_page"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/time_page_padding_end"
+        android:paddingLeft="@dimen/time_page_padding_start"
+        android:paddingRight="@dimen/time_page_padding_end"
+        android:paddingStart="@dimen/time_page_padding_start" >
+
+        <TextView
+            android:id="@+id/fling_time_widget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/fling_time_widget_margintop"
+            android:singleLine="true"
+            android:text="12:32 PM"
+            android:textColor="#ffffffff"
+            android:textSize="@dimen/fling_time_widget_textsize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/failed_page"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/failed_page_padding_end"
+        android:paddingLeft="@dimen/failed_page_padding_start"
+        android:paddingRight="@dimen/failed_page_padding_end"
+        android:paddingStart="@dimen/failed_page_padding_start" >
+
+        <TextView
+            android:id="@+id/connect_error_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/connect_error_title_margintop"
+            android:singleLine="true"
+            android:text="@string/error_title"
+            android:textColor="#ffff9600"
+            android:textSize="@dimen/connect_error_title_textsize" />
+
+        <TextView
+            android:id="@+id/connect_error_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/connect_error_desc_margintop"
+            android:singleLine="true"
+            android:textColor="#ffff9600"
+            android:textSize="@dimen/connect_error_desc_textsize"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/line_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/line_image_margintop"
+            android:src="@drawable/line" />
+
+        <TextView
+            android:id="@+id/connect_error_detail_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/connect_error_detail_info_margintop"
+            android:singleLine="true"
+            android:textColor="#ffc0c0c0"
+            android:textSize="@dimen/connect_error_detail_info_textsize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ready_page"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/ready_page_padding_bottom"
+        android:visibility="visible" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="@string/fling_ready"
+            android:textColor="#ffc16a10"
+            android:textSize="@dimen/fling_ready_textsize" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/ready_visit"
+                android:textColor="#ffc0c0c0"
+                android:textSize="@dimen/ready_visit_textsize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/learn_visit_site"
+                android:textColor="#ffc16a10"
+                android:textSize="@dimen/learn_visit_site_textsize" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_page"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/bottom_page_padding_bottom"
+        android:paddingEnd="@dimen/bottom_page_padding_end"
+        android:paddingLeft="@dimen/bottom_page_padding_start"
+        android:paddingRight="@dimen/bottom_page_padding_end"
+        android:paddingStart="@dimen/bottom_page_padding_start" >
+
+        <ImageView
+            android:id="@+id/bottom_line_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bottom_line_image_margintop"
+            android:paddingBottom="@dimen/bottom_line_image_padding_bottom"
+            android:src="@drawable/line" />
+
+        <ImageView
+            android:id="@+id/fling_state_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bottom_line_image"
+            android:src="@drawable/cast_on" />
+
+        <TextView
+            android:id="@+id/fling_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/fling_state_image"
+            android:layout_below="@id/bottom_line_image"
+            android:layout_marginStart="@dimen/fling_device_name_marginstart"
+            android:layout_marginTop="@dimen/fling_device_name_margintop"
+            android:layout_toEndOf="@id/fling_state_image"
+            android:layout_toRightOf="@id/fling_state_image"
+            android:singleLine="true"
+            android:textColor="#ffa9a9ab"
+            android:textSize="@dimen/fling_device_name_textsize" />
+
+        <TextView
+            android:id="@+id/ready_wifi_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fling_device_name"
+            android:layout_marginStart="@dimen/ready_wifi_name_marginstart"
+            android:layout_toEndOf="@id/fling_state_image"
+            android:layout_toRightOf="@id/fling_state_image"
+            android:singleLine="true"
+            android:textColor="#ff858585"
+            android:textSize="@dimen/ready_wifi_name_textsize" />
+
+        <ImageView
+            android:id="@+id/ready_wifi_signal_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ready_wifi_name"
+            android:layout_toEndOf="@id/ready_wifi_name"
+            android:layout_toRightOf="@id/ready_wifi_name"
+            android:paddingBottom="@dimen/ready_wifi_signal_padding_bottom"
+            android:paddingLeft="@dimen/ready_wifi_signal_padding_left"
+            android:src="@drawable/wifi_signal_4" />
+
+        <ImageView
+            android:id="@+id/internet_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ready_wifi_name"
+            android:layout_toEndOf="@id/ready_wifi_signal_icon"
+            android:layout_toRightOf="@id/ready_wifi_signal_icon"
+            android:src="@drawable/internet_on"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/fling_sw_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fling_state_image"
+            android:layout_marginTop="@dimen/fling_sw_version_margintop"
+            android:singleLine="true"
+            android:text="@string/current_version"
+            android:textColor="#ffe28b24"
+            android:textSize="@dimen/fling_sw_version_textsize" />
+
+        <TextView
+            android:id="@+id/key_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ready_wifi_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/logo_image_margintop"
+            android:singleLine="true"
+            android:text="@string/keycode"
+            android:textColor="#ffff9600"
+            android:textSize="@dimen/connect_error_title_textsize" 
+            android:visibility="gone"/>
+        
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/ready_wifi_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/logo_image_margintop"
+            android:src="@drawable/logo" />
+    </RelativeLayout>
+
+</FrameLayout>
