@@ -28,7 +28,9 @@ public class MediaRenderProxy implements IBaseEngine{
 
 	@Override
 	public boolean startEngine() {
-		mContext.startService(new Intent(MediaRenderService.START_RENDER_ENGINE));
+		Intent intent = new Intent(mContext, MediaRenderService.class);
+		intent.setAction(MediaRenderService.START_RENDER_ENGINE);
+		mContext.startService(intent);
 		return true;
 	}
 
@@ -40,7 +42,9 @@ public class MediaRenderProxy implements IBaseEngine{
 
 	@Override
 	public boolean restartEngine() {
-		mContext.startService(new Intent(MediaRenderService.RESTART_RENDER_ENGINE));
+		Intent intent = new Intent(mContext, MediaRenderService.class);
+		intent.setAction(MediaRenderService.RESTART_RENDER_ENGINE);
+		mContext.startService(intent);
 		return true;
 	}
 
