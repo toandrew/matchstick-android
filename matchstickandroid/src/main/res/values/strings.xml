@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">MyFlint</string>
+    <string name="start_server">Start Fling Server</string>
+    <string name="stop_server">Stop Fling Server</string>
+    <string name="wifi_state">WiFi State</string>
+    <string name="instruction_pre">Fling media contents(Video, Audio, Game, etc) to device</string>
+    <string name="instruction">Device:</string>
+    <string name="no_wifi">No WiFi</string>
+    <string name="notif_server_starting">Fling Server started!</string>
+    <string name="notif_title">Fling Server is running...</string>
+    
+    <string name="storage_warning">Error: please make sure internal storage is available！</string>
+    
+    <string name="error_title">Oops...</string>
+    <string name="error_detail_no_wifi">Please make sure your WiFi is enabled!</string>
+    <string name="error_detail_no_ip">Getting IP address, please wait...</string>
+    
+    <string name="fling_ready">Ready to Fling</string>
+    <string name="ready_visit">Learn more at:</string>
+    <string name="learn_visit_site">OpenFlint</string>
+    <string name="fling_info">Info:</string>
+    <string name="current_version">Version</string>
+    <string name="resolution">Resolution</string>
+    
+    <string name="ethernet_connected_status">Wired connection connected</string>
+    <string name="ethernet_disconnected_status">Wired connection disconnected</string>
+
+
+    <string name="second">S</string>
+    <string name="separate"> / </string>
+    <string name="init_time">00:00</string>    
+    
+    <string name="load_image_fail">"image load fail"</string>  
+    <string name="parse_image_fail">"image parse fail"</string>  
+    
+    <string name="toast_musicplay_fail">music play error</string>
+    <string name="toast_videoplay_fail">video play error</string>
+    <string name="video_loading">Loading…</string>
+    <string name="video_speed_unit_second">S</string>
+    <string name="buffering">Loading…</string>
+    
+    <string name="mp_unknown_artist">Unknow Artist</string>
+    <string name="mp_unknown_album">Unknow Album</string>
+    <string name="mp_cant_find_lyrics">the lrc can\'t be found</string>
+    <string name="mp_lyrics_tips">***&#160;&#160;&#160;the lrc come from internet，just be reference&#160;&#160;&#160;***</string>
+    
+    <string name="sw_updating">Downloading</string>
+
+    <string name="downloading">Downloading...</string>
+    <string name="download_ok">Donwload Ok!</string>
+    <string name="download_failed">Donwload Failed!</string>
+    
+    <string name="install_apk_hint">App Install Url</string>
+    <string name="keycode">T9C9</string>
+    
+    <string name="wifi_setup_hint">Connecting, please wait...</string>
+    
+    <string name="wifi_disconnected">Wifi disconnected!</string>
+    <string name="wifi_connected">Wifi connected!</string>
+</resources>

@@ -1,0 +1,72 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From matchstick-android:
+* .gitignore
+* .idea/
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/matchstick-android.iml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* README.md
+* apks/
+* apks/MyFlint.apk
+* ic_launcher-web.png
+* ic_left-web.png
+* my_keystore
+* proguard-project.txt
+From sdk:
+* AndroidManifest.xml
+* lint.xml
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In sdk:
+* src/ => sdk/src/main/java/
+In matchstick-android:
+* AndroidManifest.xml => matchstickandroid/src/main/AndroidManifest.xml
+* assets/ => matchstickandroid/src/main/assets/
+* jni/ => matchstickandroid/src/main/jni/
+* libs/armeabi-v7a/libbspatch.so => matchstickandroid/src/main/jniLibs/armeabi-v7a/libbspatch.so
+* libs/armeabi-v7a/libflint-android.so => matchstickandroid/src/main/jniLibs/armeabi-v7a/libflint-android.so
+* libs/armeabi-v7a/libgit-platinum.so => matchstickandroid/src/main/jniLibs/armeabi-v7a/libgit-platinum.so
+* libs/armeabi/libgit-platinum.so => matchstickandroid/src/main/jniLibs/armeabi/libgit-platinum.so
+* libs/base64-2.3.8.jar => matchstickandroid/libs/base64-2.3.8.jar
+* libs/bcprov-ext-jdk16-1.46.jar => matchstickandroid/libs/bcprov-ext-jdk16-1.46.jar
+* libs/dd-plist.jar => matchstickandroid/libs/dd-plist.jar
+* libs/jmdns-3.4.0.jar => matchstickandroid/libs/jmdns-3.4.0.jar
+* libs/netty-3.2.4.Final.jar => matchstickandroid/libs/netty-3.2.4.Final.jar
+* libs/umeng-analytics-v5.4.2.jar => matchstickandroid/libs/umeng-analytics-v5.4.2.jar
+* libs/umeng-update-v2.6.0.1.jar => matchstickandroid/libs/umeng-update-v2.6.0.1.jar
+* lint.xml => matchstickandroid/lint.xml
+* res/ => matchstickandroid/src/main/res/
+* src/ => matchstickandroid/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

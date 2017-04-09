@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyFlint</string>
+    <string name="start_server">启动投射服务</string>
+    <string name="stop_server">停止投射服务</string>
+    <string name="wifi_state">WiFi状态</string>
+    <string name="instruction_pre">启动后可以投射内容（视频，音乐，图片，游戏等）到该设备</string>
+    <string name="instruction">设备：</string>
+    <string name="no_wifi">无WiFi网络</string>
+    <string name="notif_server_starting">Fling服务已启动</string>
+    <string name="notif_title">Fling服务正在运行</string>
+    <string name="storage_warning">不能运行程序，请确认内部存储空间未满！</string>
+    <string name="error_title">亲，出问题了。。。</string>
+    <string name="error_detail_no_wifi">请确认WiFi已打开！</string>
+    <string name="error_detail_no_ip">不能获得IP地址，请确认网络连接正常！</string>
+    <string name="fling_ready">准备投射</string>
+    <string name="ready_visit">获取更多信息请查看：</string>
+    <string name="learn_visit_site">OpenFlint</string>
+    <string name="fling_info">设备信息:</string>
+    <string name="current_version">版本</string>
+    <string name="resolution">分辨率</string>
+    <string name="ethernet_connected_status">有线网络已连接</string>
+    <string name="ethernet_disconnected_status">有线网络未连接</string>
+    <string name="sw_updating">正在下载更新版本</string>
+    
+    <string name="downloading">正在下载...</string>
+    <string name="download_ok">正在下载！</string>
+    <string name="download_failed">下载失败！</string>
+
+    <string name="install_apk_hint">安装应用请访问</string>
+	<string name="wifi_setup_hint">正在连接...</string>
+</resources>
