@@ -323,7 +323,7 @@ public class FlintServerService extends Service implements Runnable,
                 // TODO Auto-generated method stub
                 while (!sShouldExit) {
                     boolean gotIpAddress = (Globals.getWifiIp() != null);
-                    if (gotIpAddress) {
+                    if (gotIpAddress && !MediaRenderProxy.getInstance().isAlive()) {
                         Log.e(TAG, "ready to start DLNA and Airplay service!");
                         runOtherServices();
                     } else if (!gotIpAddress) {

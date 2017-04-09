@@ -48,4 +48,12 @@ public class MediaRenderProxy implements IBaseEngine{
 		return true;
 	}
 
+	public boolean isAlive() {
+		if (mInstance == null) {
+			return false;
+		}
+
+		return mInstance.isAlive();
+	} 
+
 }

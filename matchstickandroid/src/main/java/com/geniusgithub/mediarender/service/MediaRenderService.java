@@ -231,4 +231,12 @@ public class MediaRenderService extends Service implements IBaseEngine{
         log.e("END releaseWakeLock");
     }
 
+    public boolean isAlive() {
+    	if (mWorkThread != null && mWorkThread.isAlive()) {
+    		return true;
+    	}
+
+    	return false;
+    }
+
 }
