@@ -31,6 +31,6 @@ dependencies {
     compile files('libs/dd-plist.jar')
     compile files('libs/jmdns-3.4.0.jar')
     compile files('libs/netty-3.2.4.Final.jar')
-    compile files('libs/umeng-analytics-v5.4.2.jar')
-    compile files('libs/umeng-update-v2.6.0.1.jar')
+
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

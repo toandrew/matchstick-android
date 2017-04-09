@@ -45,8 +45,6 @@ import android.widget.TextView;
 import com.geniusgithub.mediarender.BaseActivity;
 import com.geniusgithub.mediarender.util.DlnaUtils;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.update.UmengDownloadListener;
-import com.umeng.update.UmengUpdateAgent;
 
 /**
  * Used to display UI related things.
@@ -186,30 +184,6 @@ public class FlintActivity extends BaseActivity {
 
         MobclickAgent.onResume(this);
 
-        try {
-            UmengUpdateAgent.setDownloadListener(new UmengDownloadListener() {
-
-                @Override
-                public void OnDownloadStart() {
-                    int network = Globals.checkNet();
-                    updateDisplayResolution(network, true, 0);
-                }
-
-                @Override
-                public void OnDownloadUpdate(int progress) {
-                    int network = Globals.checkNet();
-                    updateDisplayResolution(network, true, progress);
-                }
-
-                @Override
-                public void OnDownloadEnd(int result, String file) {
-                    int network = Globals.checkNet();
-                    updateDisplayResolution(network, false, 0);
-                }
-            });
-        } catch (Exception e) {
-        }
-
         updateUi();
 
         IntentFilter filter = new IntentFilter(
@@ -297,14 +271,6 @@ public class FlintActivity extends BaseActivity {
      * Init something and start service.
      */
     private void init() {
-        MobclickAgent.updateOnlineConfig(getApplicationContext());
-
-        try {
-            UmengUpdateAgent.update(this);
-            UmengUpdateAgent.setDeltaUpdate(true);
-        } catch (Exception e) {
-        }
-
         mFailedPageView.setVisibility(View.GONE);
         mReadyPageView.setVisibility(View.GONE);
 

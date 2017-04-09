@@ -132,23 +132,13 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.umeng.update.net.DownloadingService"
-            android:process=":DownloadingService" >
-        </service>
-
-        <activity
-            android:name="com.umeng.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
-
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="551507c0fd98c5416c000a01" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="INFTHINK" />
+            android:value="GOOGLEPLAY" />
     </application>
 
 </manifest>
