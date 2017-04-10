@@ -558,12 +558,12 @@ public class FlintActivity extends BaseActivity {
             }
         }
 
-        if (ipAddress != null) {
-            String apkInstallHint = getResources().getString(
-                    R.string.install_apk_hint);
-            info = info + ", " + apkInstallHint + "(" + "http://" + ipAddress
-                    + ":" + FlintServerService.DEFAULT_PORT + ")";
-        }
+        // if (ipAddress != null) {
+        //     String apkInstallHint = getResources().getString(
+        //             R.string.install_apk_hint);
+        //     info = info + ", " + apkInstallHint + "(" + "http://" + ipAddress
+        //             + ":" + FlintServerService.DEFAULT_PORT + ")";
+        // }
 
         mFlingInfoTextView.setText(info);
 
