@@ -16,6 +16,8 @@ public class RenderApplication  extends Application implements ItatisticsEvent{
 	private static RenderApplication mInstance;
 
 	private DeviceInfo mDeviceInfo;
+
+	private static boolean sIsDlanServiceStarted = false;
 	
 	
 	public synchronized static RenderApplication getInstance(){
@@ -69,5 +71,13 @@ public class RenderApplication  extends Application implements ItatisticsEvent{
 	
 	public static void onCatchError(Context context){
 //		TCAgent.setReportUncaughtExceptions(true);
+	}
+
+	public static void setDlanServiceStatus(boolean started) {
+		sIsDlanServiceStarted = started;
+	}
+
+	public static boolean isDlanServiceStarted() {
+		return sIsDlanServiceStarted;
 	}
 }

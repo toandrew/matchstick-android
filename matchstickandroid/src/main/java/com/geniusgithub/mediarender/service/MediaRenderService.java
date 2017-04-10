@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.PowerManager;
 
+import com.geniusgithub.mediarender.RenderApplication;
 import com.geniusgithub.mediarender.center.DLNAGenaEventBrocastFactory;
 import com.geniusgithub.mediarender.center.DMRCenter;
 import com.geniusgithub.mediarender.center.DMRWorkThread;
@@ -61,7 +62,8 @@ public class MediaRenderService extends Service implements IBaseEngine{
 		unInitRenderService();	
 		log.e("MediaRenderService onDestroy");
 		super.onDestroy();
-	
+
+		RenderApplication.getInstance().setDlanServiceStatus(false);
 	}
 
 	@Override
@@ -113,6 +115,7 @@ public class MediaRenderService extends Service implements IBaseEngine{
 
 	
 	private void unInitRenderService(){
+		log.e("unInitRenderService!!!");
 		stopEngine();
 		removeStartMsg();
 		removeRestartMsg();
@@ -154,6 +157,7 @@ public class MediaRenderService extends Service implements IBaseEngine{
 
 	@Override
 	public boolean stopEngine() {
+		log.e("stopEngine!!!!!");
 		mWorkThread.setParam("", "");
 		exitWorkThread();
 		return true;

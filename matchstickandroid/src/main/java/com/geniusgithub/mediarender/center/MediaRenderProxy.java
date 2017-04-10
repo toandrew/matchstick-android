@@ -36,6 +36,7 @@ public class MediaRenderProxy implements IBaseEngine{
 
 	@Override
 	public boolean stopEngine() {
+		log.e("stopEngine!!!~~~~");
 		mContext.stopService(new Intent(mContext, MediaRenderService.class));
 		return true;
 	}
@@ -47,13 +48,4 @@ public class MediaRenderProxy implements IBaseEngine{
 		mContext.startService(intent);
 		return true;
 	}
-
-	public boolean isAlive() {
-		if (mInstance == null) {
-			return false;
-		}
-
-		return mInstance.isAlive();
-	} 
-
 }

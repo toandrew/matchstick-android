@@ -314,7 +314,7 @@ public class FlintServerService extends Service implements Runnable,
         // init dlna related!
         initData();
 
-        startWetServer(DEFAULT_PORT);
+        //startWetServer(DEFAULT_PORT);
 
         new Thread(new Runnable() {
 
@@ -323,7 +323,7 @@ public class FlintServerService extends Service implements Runnable,
                 // TODO Auto-generated method stub
                 while (!sShouldExit) {
                     boolean gotIpAddress = (Globals.getWifiIp() != null);
-                    if (gotIpAddress && !MediaRenderProxy.getInstance().isAlive()) {
+                    if (gotIpAddress && !RenderApplication.getInstance().isDlanServiceStarted()) {
                         Log.e(TAG, "ready to start DLNA and Airplay service!");
                         runOtherServices();
                     } else if (!gotIpAddress) {
@@ -403,14 +403,20 @@ public class FlintServerService extends Service implements Runnable,
 
     private void startDlnaService() {
         mRenderProxy.startEngine();
+
+        RenderApplication.getInstance().setDlanServiceStatus(true);
     }
 
     private void restartDlnaService() {
         mRenderProxy.restartEngine();
+
+        RenderApplication.getInstance().setDlanServiceStatus(true);
     }
 
     private void stopDlanService() {
         mRenderProxy.stopEngine();
+
+        RenderApplication.getInstance().setDlanServiceStatus(false);
     }
 
     @Override
@@ -448,7 +454,7 @@ public class FlintServerService extends Service implements Runnable,
     public void onDestroy() {
         Log.w(TAG, "onDestroy() Stopping server");
 
-        stopWebServer();
+        //stopWebServer();
 
         sShouldExit = true;
 
@@ -480,7 +486,14 @@ public class FlintServerService extends Service implements Runnable,
 
         refreshUi();
 
+        super.onDestroy();
         Log.w(TAG, "FlintServerService.onDestroy() finished");
+
+        RenderApplication.getInstance().setDlanServiceStatus(false);
+
+        Intent localIntent = new Intent();
+        localIntent.setClass(this, FlintServerService.class); // 销毁时重新启动Service
+        this.startService(localIntent);
     }
 
     /**
@@ -511,10 +524,10 @@ public class FlintServerService extends Service implements Runnable,
                     killFlingdDaemon();
                 }
 
-                runFlingDaemon();
+                //runFlingDaemon();
 
-                Log.e(TAG, "Error: Flingd Daemon stopped?!! restart it!["
-                        + sShouldExit + "]");
+                // Log.e(TAG, "Error: Flingd Daemon stopped?!! restart it!["
+                //         + sShouldExit + "]");
 
                 Thread.sleep(WAKE_INTERVAL_MS);
             } catch (InterruptedException e) {
@@ -666,6 +679,8 @@ public class FlintServerService extends Service implements Runnable,
         notification.setLatestEventInfo(getApplicationContext(), contentTitle,
                 contentText, contentIntent);
         notification.flags |= Notification.FLAG_ONGOING_EVENT;
+        // notification.flags |= Notification.FLAG_NO_CLEAR; 
+        // notification.flags |= Notification.FLAG_FOREGROUND_SERVICE;  
 
         startForeground(NOTIFICATION_ID, notification);
 
