@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
 import android.media.MediaPlayer.OnErrorListener;
@@ -18,6 +19,7 @@ import android.os.Message;
 import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -138,6 +140,111 @@ public class VideoActivity extends BaseActivity implements
 
         super.onDestroy();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        log.e(" onKeyDown " + keyCode );
+
+        switch(keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                preSeekPosition(true);
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                preSeekPosition(false);
+                break;
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+                if (mPlayerEngineImpl.isPause()) {
+                    play();
+                } else {
+                    pause();
+                }
+                break;
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                setVolume(true);
+                break;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                setVolume(false);
+                break;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        log.e(" onKeyUp " +  keyCode);
+
+        switch(keyCode) {
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                seekPosition(true);
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                seekPosition(false);
+                break;
+        }
+
+        mSeekTime = 0;
+
+        return super.onKeyUp(keyCode, event);
+    }
+
+    private int mSeekTime = 0;
+    private void preSeekPosition(boolean left) {
+        pause();
+
+        if (!isSeekComplete) {
+            return;
+        }
+        int totalTime = mPlayerEngineImpl.getDuration();
+        if (totalTime > 0) {
+            int step = 5 * 1000; // 5s
+            if (left) {
+                step = -step;
+            }
+            if (mSeekTime == 0) {
+                mSeekTime = mPlayerEngineImpl.getCurPosition();
+            }
+            mSeekTime += step;
+            if (mSeekTime >= 0 && mSeekTime <= totalTime) {
+                log.e("onKey: seekPosition: mSeekTime[" + mSeekTime + "]totalTime[" + totalTime + "]pos[" + mSeekTime + "]");
+                mUIManager.showControlView(true);
+                mUIManager.setSeekbarProgress(mSeekTime);
+            }
+        }
+    }
+
+    private void seekPosition(boolean left) {
+        play();
+        if (mSeekTime > 0 && mSeekTime <= mPlayerEngineImpl.getDuration()) {
+            onSeekCommand(mSeekTime);
+        }
+    }
+
+    private void setVolume(boolean up) {
+        try {
+            AudioManager am = (AudioManager) this
+                    .getSystemService(Context.AUDIO_SERVICE);
+            int currentVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC);
+            int maxvolume = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
+            int delta = maxvolume / 10 + 1;
+            if (!up) {
+                delta = -delta;
+            }
+            int percent = (currentVolume + delta) * 100 / maxvolume;
+
+            log.e("onKey: setVolume currentVolume[" + currentVolume + "]maxvolume[" + maxvolume + "]percent[" + percent + "]");
+
+            if(percent < 101 & percent >= 0){
+                CommonUtil.setCurrentVolume(percent, this);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setupsView() {
@@ -421,7 +528,7 @@ public class VideoActivity extends BaseActivity implements
         mUIManager.setSeekbarSecondProgress(time);
     }
 
-    private boolean isSeekComplete = false;
+    private boolean isSeekComplete = true;
 
     @Override
     public void onSeekComplete(MediaPlayer mp) {
@@ -456,7 +563,7 @@ public class VideoActivity extends BaseActivity implements
 
     @Override
     public void onSeekCommand(int time) {
-
+        log.e("onKey: onSeekCommand[" + time + "]total[" + mPlayerEngineImpl.getDuration() + "]current[" + mPlayerEngineImpl.getCurPosition() + "]");
         mUIManager.showControlView(true);
         seek(time);
     }
