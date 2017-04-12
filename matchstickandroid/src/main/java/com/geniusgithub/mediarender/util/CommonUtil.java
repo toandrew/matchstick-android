@@ -114,14 +114,14 @@ public class CommonUtil {
         AudioManager am = (AudioManager) mc
                 .getSystemService(Context.AUDIO_SERVICE);
 
-        Log.e("DLNA", "setCurrentVolume:" + percent);
         if (percent > 0) {
             setVolumeUnmute(mc);
         }
 
         int maxvolume = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        Log.e("DLNA", "setCurrentVolume:" + percent + " volume[" + Math.round((float)(maxvolume * percent) / 100f) + "]");
         am.setStreamVolume(AudioManager.STREAM_MUSIC,
-                (maxvolume * percent) / 100, AudioManager.FLAG_PLAY_SOUND
+                Math.round((float)(maxvolume * percent) / 100f), AudioManager.FLAG_PLAY_SOUND
                         | AudioManager.FLAG_SHOW_UI);
         // am.setMode(AudioManager.MODE_INVALID);
     }

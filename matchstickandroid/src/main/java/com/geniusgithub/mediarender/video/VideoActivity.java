@@ -230,7 +230,7 @@ public class VideoActivity extends BaseActivity implements
             int currentVolume = am.getStreamVolume(AudioManager.STREAM_MUSIC);
             int maxvolume = am.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-            int delta = maxvolume / 10 + 1;
+            int delta =  1;
             if (!up) {
                 delta = -delta;
             }
