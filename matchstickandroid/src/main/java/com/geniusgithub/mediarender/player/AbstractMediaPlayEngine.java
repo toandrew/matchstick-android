@@ -100,7 +100,9 @@ public abstract class AbstractMediaPlayEngine implements IBasePlayEngine, OnComp
 			case PlayState.MPS_PLAYING:
 			case PlayState.MPS_PAUSE:				
 				int time2 = reviceSeekValue(time);
+				log.e("B onKey skipTo[" + time2 + "][" + mMediaPlayer.getCurrentPosition());
 				mMediaPlayer.seekTo(time2);
+				log.e("E onKey skipTo[" + time2 + "][" + mMediaPlayer.getCurrentPosition());
 				break;
 			default:
 				break;

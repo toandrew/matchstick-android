@@ -62,6 +62,8 @@ public class VideoActivity extends BaseActivity implements
     private final static int REFRESH_SPEED = 0x0004;
     private final static int CHECK_DELAY = 0x0005;
 
+    private final static int SEEK_AFTER_TO_PLAY = 0x0006;
+
     private final static int EXIT_DELAY_TIME = 2000;
     private final static int HIDE_DELAY_TIME = 3000;
 
@@ -150,10 +152,10 @@ public class VideoActivity extends BaseActivity implements
         switch(keyCode) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 preSeekPosition(true);
-                break;
+                return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 preSeekPosition(false);
-                break;
+                return true;
             case KeyEvent.KEYCODE_DPAD_CENTER:
                 if (mPlayerEngineImpl.isPause()) {
                     play();
@@ -180,36 +182,43 @@ public class VideoActivity extends BaseActivity implements
         switch(keyCode) {
             case KeyEvent.KEYCODE_DPAD_LEFT:
                 seekPosition(true);
-                break;
+                return true;
             case KeyEvent.KEYCODE_DPAD_RIGHT:
                 seekPosition(false);
-                break;
+                return true;
         }
-
-        mSeekTime = 0;
 
         return super.onKeyUp(keyCode, event);
     }
 
-    private int mSeekTime = 0;
+    private int mSeekTime = -1;
     private void preSeekPosition(boolean left) {
         pause();
-
         if (!isSeekComplete) {
             return;
         }
+
+        //mUIManager.focusSeekBar(false);
+
         int totalTime = mPlayerEngineImpl.getDuration();
         if (totalTime > 0) {
             int step = 5 * 1000; // 5s
             if (left) {
                 step = -step;
             }
-            if (mSeekTime == 0) {
+            if (mSeekTime == -1) {
                 mSeekTime = mPlayerEngineImpl.getCurPosition();
             }
             mSeekTime += step;
+            if (mSeekTime < 0) {
+                mSeekTime = 0;
+            }
+
+            if (mSeekTime > totalTime) {
+                mSeekTime = totalTime;
+            }
             if (mSeekTime >= 0 && mSeekTime <= totalTime) {
-                log.e("onKey: seekPosition: mSeekTime[" + mSeekTime + "]totalTime[" + totalTime + "]pos[" + mSeekTime + "]");
+                log.e("onKey: seekPosition: mSeekTime[" + mSeekTime + "]totalTime[" + totalTime + "]pos[" + mPlayerEngineImpl.getCurPosition() + "]" );
                 mUIManager.showControlView(true);
                 mUIManager.setSeekbarProgress(mSeekTime);
             }
@@ -217,10 +226,17 @@ public class VideoActivity extends BaseActivity implements
     }
 
     private void seekPosition(boolean left) {
-        play();
-        if (mSeekTime > 0 && mSeekTime <= mPlayerEngineImpl.getDuration()) {
+        log.e("onKey: seekPosition:" + mSeekTime + " " + mPlayerEngineImpl.getDuration());
+        if (mSeekTime >= 0 && mSeekTime <= mPlayerEngineImpl.getDuration()) {
+            log.e("onKey: seekPosition:" + mSeekTime);
             onSeekCommand(mSeekTime);
         }
+        play();
+
+        mUIManager.showControlView(false);
+
+        //mHandler.removeMessages(SEEK_AFTER_TO_PLAY);
+        //mHandler.sendEmptyMessageDelayed(SEEK_AFTER_TO_PLAY, 5000);
     }
 
     private void setVolume(boolean up) {
@@ -259,7 +275,9 @@ public class VideoActivity extends BaseActivity implements
             public void handleMessage(Message msg) {
                 switch (msg.what) {
                 case REFRESH_CURPOS:
-                    refreshCurPos();
+                    if (mSeekTime == -1) {
+                        refreshCurPos();
+                    }
                     break;
                 case HIDE_TOOL:
                     if (!mPlayerEngineImpl.isPause()) {
@@ -278,6 +296,11 @@ public class VideoActivity extends BaseActivity implements
 
                 case PLAYER_MSG_FINISHED:
                     doFinished();
+                    break;
+
+                case SEEK_AFTER_TO_PLAY:
+                    //mUIManager.focusSeekBar(true);
+                    mSeekTime = -1;
                     break;
 
                 case HIDE_NAV_BAR:
@@ -406,6 +429,8 @@ public class VideoActivity extends BaseActivity implements
     public void refreshCurPos() {
         int pos = mPlayerEngineImpl.getCurPosition();
 
+        log.e("onKey refreshCurPos:" + pos);
+
         mUIManager.setSeekbarProgress(pos);
         DLNAGenaEventBrocastFactory.sendSeekEvent(mContext, pos);
     }
@@ -533,7 +558,7 @@ public class VideoActivity extends BaseActivity implements
     @Override
     public void onSeekComplete(MediaPlayer mp) {
         isSeekComplete = true;
-        log.e("onSeekComplete ...");
+        log.e("onKey onSeekComplete ...[" + mp.getCurrentPosition() + "]");
     }
 
     @Override
@@ -650,6 +675,10 @@ public class VideoActivity extends BaseActivity implements
 
         }
 
+        public void focusSeekBar(boolean b) {
+            mSeekBar.setFocusable(b);
+        }
+
         public void showPrepareLoadView(boolean isShow, boolean finished) {
             if (isShow) {
                 Log.e("VideoActivity", "Black showPrepareLoadView:" + isShow);
@@ -748,12 +777,13 @@ public class VideoActivity extends BaseActivity implements
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
             isSeekbarTouch = true;
-
+            log.e("onStartTrackingTouch!");
         }
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
             isSeekbarTouch = false;
+            log.e("onStopTrackingTouch!");
             seek(seekBar.getProgress());
             mUIManager.showControlView(true);
         }
@@ -778,6 +808,7 @@ public class VideoActivity extends BaseActivity implements
 
         public void setSeekbarProgress(int time) {
             if (!isSeekbarTouch) {
+                log.e("onKey: setSeekbarProgress[" + time + "] max[" + mSeekBar.getMax() + "][" + isSeekComplete + "]");
                 mSeekBar.setProgress(time);
             }
         }
@@ -787,6 +818,7 @@ public class VideoActivity extends BaseActivity implements
         }
 
         public void setSeekbarMax(int max) {
+            log.e("onKey: setSeekbarMax:" + max);
             mSeekBar.setMax(max);
         }
 
