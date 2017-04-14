@@ -198,8 +198,6 @@ public class VideoActivity extends BaseActivity implements
             return;
         }
 
-        //mUIManager.focusSeekBar(false);
-
         int totalTime = mPlayerEngineImpl.getDuration();
         if (totalTime > 0) {
             int step = 5 * 1000; // 5s
@@ -231,12 +229,14 @@ public class VideoActivity extends BaseActivity implements
             log.e("onKey: seekPosition:" + mSeekTime);
             onSeekCommand(mSeekTime);
         }
+
         play();
+        mSeekTime = -1;
 
         mUIManager.showControlView(false);
 
         //mHandler.removeMessages(SEEK_AFTER_TO_PLAY);
-        //mHandler.sendEmptyMessageDelayed(SEEK_AFTER_TO_PLAY, 5000);
+        //mHandler.sendEmptyMessageDelayed(SEEK_AFTER_TO_PLAY, 1000);
     }
 
     private void setVolume(boolean up) {
@@ -299,7 +299,7 @@ public class VideoActivity extends BaseActivity implements
                     break;
 
                 case SEEK_AFTER_TO_PLAY:
-                    //mUIManager.focusSeekBar(true);
+                    play();
                     mSeekTime = -1;
                     break;
 
@@ -673,10 +673,6 @@ public class VideoActivity extends BaseActivity implements
 
         public void unInit() {
 
-        }
-
-        public void focusSeekBar(boolean b) {
-            mSeekBar.setFocusable(b);
         }
 
         public void showPrepareLoadView(boolean isShow, boolean finished) {
