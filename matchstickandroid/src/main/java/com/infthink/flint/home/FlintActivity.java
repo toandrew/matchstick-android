@@ -294,10 +294,10 @@ public class FlintActivity extends BaseActivity {
         SharedPreferences settings = getSharedPreferences(
                 Globals.getSettingsName(), Globals.getSettingsMode());
         mDeviceFriendName = settings.getString("DeviceFriendName",
-                "MatchStick-Android");
+                "MyFlint-Android");
 
-        if (mDeviceFriendName.equals("MatchStick-Android")) {
-            String deviceName = "MatchStick-Android-";
+        if (mDeviceFriendName.equals("MyFlint-Android")) {
+            String deviceName = "MyFlint-Android-";
             for (int i = 0; i < 4; i++) {
                 deviceName += (int) Math.floor(Math.random() * 10);
             }

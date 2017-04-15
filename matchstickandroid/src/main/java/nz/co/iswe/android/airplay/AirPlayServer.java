@@ -188,7 +188,7 @@ public class AirPlayServer implements Runnable {
     // 0x2a7f->0x39f7
 
     // private static final String AIRPLAY_NAME =
-    // "MatchStick-Android-xxxxxx-AirPlay";
+    // "MyFlint-Android-xxxxxx-AirPlay";
 
     private AirplayVideoInfoListener mAirplayVideoInfoListener;
 

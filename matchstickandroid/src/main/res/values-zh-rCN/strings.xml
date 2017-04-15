@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">MyFlint</string>
     <string name="start_server">启动投射服务</string>
     <string name="stop_server">停止投射服务</string>
@@ -16,7 +15,7 @@
     <string name="error_detail_no_ip">不能获得IP地址，请确认网络连接正常！</string>
     <string name="fling_ready">准备投射</string>
     <string name="ready_visit">获取更多信息请查看：</string>
-    <string name="learn_visit_site">OpenFlint</string>
+    <string name="learn_visit_site">MyFlint</string>
     <string name="fling_info">设备信息:</string>
     <string name="current_version">版本</string>
     <string name="resolution">分辨率</string>
@@ -35,23 +34,23 @@
     <string name="separate"> / </string>
     <string name="init_time">00:00</string>
 
-    <string name="load_image_fail">"image load fail"</string>
-    <string name="parse_image_fail">"image parse fail"</string>
+    <string name="load_image_fail">图片加载失败</string>
+    <string name="parse_image_fail">图片错误</string>
 
-    <string name="toast_musicplay_fail">music play error</string>
-    <string name="toast_videoplay_fail">video play error</string>
-    <string name="video_loading">Loading…</string>
+    <string name="toast_musicplay_fail">音乐播放错误</string>
+    <string name="toast_videoplay_fail">视频播放错误</string>
+    <string name="video_loading">视频加载中…</string>
     <string name="video_speed_unit_second">S</string>
-    <string name="buffering">Loading…</string>
+    <string name="buffering">正在缓冲…</string>
 
-    <string name="mp_unknown_artist">Unknow Artist</string>
-    <string name="mp_unknown_album">Unknow Album</string>
-    <string name="mp_cant_find_lyrics">the lrc can\'t be found</string>
-    <string name="mp_lyrics_tips">***&#160;&#160;&#160;the lrc come from internet，just be reference&#160;&#160;&#160;***</string>
+    <string name="mp_unknown_artist">未知音乐家</string>
+    <string name="mp_unknown_album">未知歌单</string>
+    <string name="mp_cant_find_lyrics">不能发现歌词</string>
+    <string name="mp_lyrics_tips">***&#160;&#160;&#160;歌词来自互联网，未必准确&#160;&#160;&#160;***</string>
 
-    <string name="keycode">T9C9</string>
+    <string name="keycode"></string>
 
-    <string name="wifi_disconnected">Wifi disconnected!</string>
-    <string name="wifi_connected">Wifi connected!</string>
+    <string name="wifi_disconnected">WiFi已断开!</string>
+    <string name="wifi_connected">WiFi已连接!</string>
     <string name="tb_munion_tip_download_prefix">正在下载:</string>
 </resources>

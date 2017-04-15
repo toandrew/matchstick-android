@@ -17,7 +17,7 @@
     
     <string name="fling_ready">Ready to Fling</string>
     <string name="ready_visit">Learn more at:</string>
-    <string name="learn_visit_site">OpenFlint</string>
+    <string name="learn_visit_site">MyFlint</string>
     <string name="fling_info">Info:</string>
     <string name="current_version">Version</string>
     <string name="resolution">Resolution</string>
@@ -51,7 +51,7 @@
     <string name="download_failed">Donwload Failed!</string>
     
     <string name="install_apk_hint">App Install Url</string>
-    <string name="keycode">T9C9</string>
+    <string name="keycode"></string>
     
     <string name="wifi_setup_hint">Connecting, please wait...</string>
     

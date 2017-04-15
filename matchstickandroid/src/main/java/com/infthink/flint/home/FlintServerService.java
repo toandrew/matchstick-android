@@ -616,7 +616,7 @@ public class FlintServerService extends Service implements Runnable,
         SharedPreferences settings = getSharedPreferences(
                 Globals.getSettingsName(), Globals.getSettingsMode());
         String dName = settings.getString("DeviceFriendName",
-                "MatchStick-Android");
+                "MyFlint-Android");
         if (mDeviceFriendName != null && !mDeviceFriendName.equals(dName)) {
             Log.e(TAG, "Current using device name " + mDeviceFriendName);
             settings.edit().putString("DeviceFriendName", mDeviceFriendName)
@@ -626,8 +626,8 @@ public class FlintServerService extends Service implements Runnable,
 
         mDeviceFriendName = dName;
 
-        if (mDeviceFriendName.equals("MatchStick-Android")) {
-            String deviceName = "MatchStick-Android-";
+        if (mDeviceFriendName.equals("MyFlint-Android")) {
+            String deviceName = "MyFlint-Android-";
             for (int i = 0; i < 4; i++) {
                 deviceName += (int) Math.floor(Math.random() * 10);
             }
